@@ -1,0 +1,189 @@
+
+[
+  {
+      "question_text": "##User Feedback Form\n\nIn this assignment, you need to create a User Feedback Form by applying JavaScript functionality to the prefilled HTML and CSS.\n\n**Refer to the below video.**\n\n<video width=\"400\" height=\"260\" controls>\n<source src=\"https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/placement-happenings/webcoding-mp4videos-april28/User+feedback+vid.mp4\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>\n<br/>\n\n<MultiLineWarning>\n    - Don't edit the prefilled code. Just apply JavaScript functionality to the prefilled HTML and CSS to make the website dynamic.\n</MultiLineWarning>\n\nBy following the below instructions, achieve the JavaScript functionality.\n\n- When the submit button is clicked:\n - If any one of the input fields (Name, Email, Product, Rating, Feedback, or Comments) is empty, the text content of the element having `id=\"error-message\"` should be replaced with the text `\"Please enter all the fields before submitting.\"` in red.\n\n - If the Email does not contain \"@\" or is in an invalid format, the text content of the element with `id=\"error-message\"` should be replaced with the text `\"Please enter a valid email address!\"` in red.\n\n - If the Product Name is neither \"Gift\", \"Trimmer\", nor \"Jewel\", the text content of the element with `id=\"error-message\"` should be replaced with the text `\"You didn't purchase this product.\"` in red.\n\n - If the Rating is less than 1 or greater than 5, the text content of the element with `id=\"error-message\"` should be replaced with the text `\"Please provide a rating between 1 and 5.\"` in red.\n\n - If the Feedback Type is neither \"Complaint\" nor \"Suggestion\", the text content of the element with `id=\"error-message\"` should be replaced with the text `\"Feedback type should be either Complaint or Suggestion.\"` in red.\n\n - If the Comments field contains less than 15 characters, the text content of the element with `id=\"error-message\"` should be replaced with the text `\"Comments must be at least 15 characters long.\"` in red.\n\n - If all the input fields are filled correctly, the text content of the element with `id=\"error-message\"` should be replaced with the text `\"Processing...\"` in orange.\n\n   - After a delay of 3 seconds, replace the text content of the element with `id=\"error-message\"` with `\"Thank you for your feedback!\"` in green.\n\n- When the reset button is clicked:\n\n - The values in all input fields and the text content of the element with `id=\"error-message\"` should be replaced with empty strings.",
+      "question_id": "e339300e-cede-4f17-a9ce-43065f643e60",
+      "short_text": "User Feedback Form",
+      "question_type": "HTML_CODING",
+      "language": "ENGLISH",
+      "skills": [],
+      "content_type": "MARKDOWN",
+      "toughness": "EASY",
+      "question_asked_by_companies_info": [],
+      "multimedia": [],
+      "default_code_metadata": [
+          {
+              "code_data": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>User Feedback Form</title>\n</head>\n\n<body>\n    <div class=\"container\">\n        <div class=\"form-container\">\n            <h1>Product Feedback</h1>\n            <p>Please provide your feedback below:</p>\n            <form id=\"feedback-form\">\n                <div class=\"input-group\">\n                    <label for=\"full-name\">Full Name</label>\n                    <input type=\"text\" id=\"full-name\" name=\"full-name\" placeholder=\"First and Last Name\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"email\">Email Address</label>\n                    <input type=\"text\" id=\"email\" name=\"email\" placeholder=\"your-email@example.com\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"product-name\">Product Name</label>\n                    <input type=\"text\" id=\"product-name\" name=\"product-name\" placeholder=\"Product Name\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"rating\">Rating (1-5)</label>\n                    <input type=\"text\" id=\"rating\" name=\"rating\" min=\"1\" max=\"5\" placeholder=\"Rating (1-5)\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"feedback-type\">Feedback Type (Complaint/Suggestion)</label>\n                    <input type=\"text\" id=\"feedback-type\" name=\"feedback-type\" placeholder=\"Complaint/Suggestion\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"comments\">Comments/Suggestions</label>\n                    <textarea id=\"comments\" name=\"comments\" placeholder=\"Your comments\"></textarea>\n                </div>\n                <p id=\"error-message\"></p>\n                <div class=\"form-actions\">\n                    <button type=\"button\" id=\"reset\" class=\"reset-btn\">RESET</button>\n                    <button type=\"button\" id=\"submit\" class=\"submit-btn\">SUBMIT</button>\n                </div>\n            </form>\n        </div>\n    </div>\n</body>\n\n</html>",
+              "language": "HTML"
+          },
+          {
+              "code_data": "* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n    font-family: Arial, sans-serif;\n}\n\nbody {\n    background: linear-gradient(to right, #6a11cb, #2575fc);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n}\n\n.container {\n    background: #fff;\n    padding: 30px;\n    border-radius: 12px;\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n    width: 100%;\n    max-width: 500px;\n}\n\nh1 {\n    text-align: center;\n    color: #333;\n}\n\np {\n    text-align: center;\n    color: #777;\n    font-size: 14px;\n}\n\n.input-group {\n    margin-bottom: 15px;\n}\n\n.input-group label {\n    display: block;\n    margin-bottom: 6px;\n    font-weight: bold;\n}\n\n.input-group input,\n.input-group textarea,\n.input-group select {\n    width: 100%;\n    padding: 10px;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    font-size: 14px;\n    background-color: #f9f9f9;\n}\n\n.input-group input:focus,\n.input-group textarea:focus,\n.input-group select:focus {\n    border-color: #2575fc;\n    outline: none;\n}\n\n.form-actions {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 20px;\n}\n\nbutton {\n    padding: 10px 20px;\n    font-size: 14px;\n    border: none;\n    border-radius: 6px;\n    cursor: pointer;\n    transition: background 0.3s ease;\n}\n\n.reset-btn {\n    background-color: #e0e0e0;\n    color: #333;\n}\n\n.reset-btn:hover {\n    background-color: #d5d5d5;\n}\n\n.submit-btn {\n    background-color: #2575fc;\n    color: white;\n}\n\n.submit-btn:hover {\n    background-color: #0066cc;\n}\n\n#error-message {\n    font-size: 14px;\n    text-align: center;\n    font-weight: bold;\n    margin-top: 10px;\n}\n\n",
+              "language": "CSS"
+          },
+          {
+              "code_data": "document.getElementById('submit').addEventListener('click', function() {\n\n    const fullName = document.getElementById('full-name').value.trim();\n    const email = document.getElementById('email').value.trim();\n    const product = document.getElementById('product-name').value.trim();\n    const ratingNum = document.getElementById('rating').value.trim();\n    const feedbackType = document.getElementById('feedback-type').value.trim();\n    const comments = document.getElementById('comments').value.trim();\n\n    const errorMessage = document.getElementById('error-message');\n    errorMessage.style.color = 'red';\n\n    if (!fullName || !email || !product || !ratingNum || !feedbackType || !comments) {\n        errorMessage.textContent = \"Please enter all the fields before submitting.\";\n        return;\n    }\n\n    // Email validation: Must contain \"@\" symbol\n    if (!email.includes('@') || !email.includes('.')) {\n        errorMessage.textContent = 'Please enter a valid email address!';\n        return;\n    }\n\n    // Product validation: Only valid if Gift, Trimmer, or Jewel\n    if (!['Gift', 'Trimmer', 'Jewel'].includes(product)) {\n        errorMessage.textContent = \"You didn't purchase this product.\";\n        return;\n    }\n\n    // Rating validation: Should be between 1 and 5\n    const rating = parseInt(ratingNum);\n    if (isNaN(rating) || rating < 1 || rating > 5) {\n        errorMessage.textContent = 'Please provide a rating between 1 and 5.';\n        return;\n    }\n\n    // Feedback type validation: Only \"Complaint\" or \"Suggestion\"\n    if (!['Complaint', 'Suggestion'].includes(feedbackType)) {\n        errorMessage.textContent = 'Feedback type should be either Complaint or Suggestion.';\n        return;\n    }\n\n    if (comments.length < 15) {\n        errorMessage.textContent = 'Comments must be at least 15 characters long.';\n        return;\n    }\n\n    // If all validations pass\n    errorMessage.style.color = 'orange';\n    errorMessage.textContent = 'Processing...';\n\n    setTimeout(function() {\n        errorMessage.textContent = 'Thank you for your feedback!';\n        errorMessage.style.color = 'green'; // Reset the form\n    }, 3000);\n});\n\n// Clear messages when RESET button is clicked\ndocument.getElementById('reset').addEventListener('click', function() {\n    const errorMessage = document.getElementById('error-message');\n    document.getElementById('full-name').value = \"\";\n    document.getElementById('email').value = \"\";\n    document.getElementById('product-name').value = \"\";\n    document.getElementById('rating').value = \"\";\n    document.getElementById('feedback-type').value = \"\";\n    document.getElementById('comments').value = \"\";\n    errorMessage.textContent = '';\n    errorMessage.style.color = '';\n});",
+              "language": "JAVASCRIPT"
+          }
+      ],
+      "solutions_metadata": [],
+      "hints": [],
+      "tag_names": [
+          "CSS_SELECTORS_1"
+      ],
+      "concept_tag_names": [],
+      "test_cases": [
+          {
+            "id": "a1e2f2c1-12df-4fb6-bc35-8d8b7579f6cb",
+            "display_text": "When the 'SUBMIT' button is clicked with valid inputs for all fields, the form should proceed successfully, and a success message should be displayed.",
+            "criteria": "function testGivenInstructions() { const firstName = $('#full-name').toArray().filter((element) => $(element).attr('id') === 'full-name').length === 1; const email = $('#email').toArray().filter((element) => $(element).attr('id') === 'email').length === 1; const product = $('#product-name').toArray().filter((element) => $(element).attr('id') === 'product-name').length === 1; const rating = $('#rating').toArray().filter((element) => $(element).attr('id') === 'rating').length === 1; const feedbackType = $('#feedback-type').toArray().filter((element) => $(element).attr('id') === 'feedback-type').length === 1; const comments = $('#comments').toArray().filter((element) => $(element).attr('id') === 'comments').length === 1; const isSubmitBtnExists = $('#submit').toArray().length === 1; const isErrorMessageElementExists = $('#error-message').toArray().length === 1; const isFormValid = firstName && email && product && rating && feedbackType && comments && isSubmitBtnExists && isErrorMessageElementExists; assert(isFormValid === true); return isFormValid; } function testValidInputs() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('#submit'); firstNameInput.val('John Doe'); emailInput.val('john.doe@xyz.com'); productInput.val('Gift'); ratingInput.val(5); feedbackTypeInput.val('Complaint'); commentsInput.val('Great product, loved it!'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Processing...'; assert(expectedOutput === true); } testGivenInstructions(); if (testGivenInstructions()) { testValidInputs(); }",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 1,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "a1f87d7b-845e-4bb7-b81f-3bdf8f3cf57e",
+            "display_text": "When the 'SUBMIT' button is clicked with any empty field, an error message should be displayed stating 'Please enter all the fields before submitting.'",
+            "criteria": "function testEmptyField() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val(''); emailInput.val(''); productInput.val(''); ratingInput.val(''); feedbackTypeInput.val(''); commentsInput.val(''); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Please enter all the fields before submitting.'; assert(expectedOutput === true); } testEmptyField();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 2,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "cd3d6e0b-4078-460b-b6d9-745f3a2d0836",
+            "display_text": "When the 'SUBMIT' button is clicked with an invalid email (missing '@'), an error message should be displayed stating 'Please enter a valid email address!'",
+            "criteria": "function testInvalidEmail() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val('John Doe'); emailInput.val('johndoe.com'); productInput.val('Gift'); ratingInput.val(5); feedbackTypeInput.val('Complaint'); commentsInput.val('Great product, loved it!'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Please enter a valid email address!'; assert(expectedOutput === true); } testInvalidEmail();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 3,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "f5b57fcd-34a5-4c9b-bd7e-22ed8b8d18d7",
+            "display_text": "When the 'SUBMIT' button is clicked with a product name other than 'Gift', 'Trimmer', or 'Jewel', an error message should be displayed stating 'You didn't purchase this product.'",
+            "criteria": "function testInvalidProduct() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val('John Doe'); emailInput.val('john.doe@xyz.com'); productInput.val('Laptop'); ratingInput.val(5); feedbackTypeInput.val('Complaint'); commentsInput.val('Great product, loved it!'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === \"You didn't purchase this product.\"; assert(expectedOutput === true); } testInvalidProduct();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 4,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "e61d174f-171e-4719-99f9-bc620b9060c0",
+            "display_text": "When the 'SUBMIT' button is clicked with a rating less than 1 or greater than 5, an error message should be displayed stating 'Please provide a rating between 1 and 5.'",
+            "criteria": "function testInvalidRating() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val('John Doe'); emailInput.val('john.doe@xyz.com'); productInput.val('Gift'); ratingInput.val(6); feedbackTypeInput.val('Complaint'); commentsInput.val('Great product, loved it!'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Please provide a rating between 1 and 5.'; assert(expectedOutput === true); } testInvalidRating();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 5,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "af7a9e0a-12ea-42b0-b755-21b705e575d1",
+            "display_text": "When the 'SUBMIT' button is clicked with a feedback type that is not 'Complaint' or 'Suggestion', an error message should be displayed stating 'Feedback type should be either Complaint or Suggestion.'",
+            "criteria": "function testInvalidFeedbackType() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val('John Doe'); emailInput.val('john.doe@xyz.com'); productInput.val('Gift'); ratingInput.val(5); feedbackTypeInput.val('Inquiry'); commentsInput.val('Great product, loved it!'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Feedback type should be either Complaint or Suggestion.'; assert(expectedOutput === true); } testInvalidFeedbackType();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 6,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "d34b6bb6-08e4-4b16-b9f9-b59ecb4c634f",
+            "display_text": "When the 'SUBMIT' button is clicked with comments less than 15 characters, an error message should be displayed stating 'Comments must be at least 15 characters long.'",
+            "criteria": "function testShortComments() { const firstNameInput = $('#full-name'); const emailInput = $('#email'); const productInput = $('#product-name'); const ratingInput = $('#rating'); const feedbackTypeInput = $('#feedback-type'); const commentsInput = $('#comments'); const submitBtn = $('.submit-btn'); firstNameInput.val('John Doe'); emailInput.val('john.doe@xyz.com'); productInput.val('Gift'); ratingInput.val(5); feedbackTypeInput.val('Complaint'); commentsInput.val('Too short'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Comments must be at least 15 characters long.'; assert(expectedOutput === true); } testShortComments();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 7,
+            "reason_for_failure": null,
+            "weightage": 10
+          },
+          {
+            "id": "34d6bb3f-8d6f-4d79-bff4-f567abf53b78",
+            "display_text": "When the 'RESET' button is clicked, the form fields should be cleared, and the error or success message should also be removed.",
+            "criteria": "function testResetButton() { const resetBtn = $('.reset-btn'); const errorMessageElement = $('#error-message'); errorMessageElement.html('Saving...'); errorMessageElement.css('color', 'orange'); resetBtn.click(); const formInputs = $('#feedback-form input, #feedback-form textarea'); const allFieldsEmpty = formInputs.toArray().every(input => $(input).val() === ''); const messageCleared = errorMessageElement.html() === ''; assert(allFieldsEmpty && messageCleared); } testResetButton();",
+            "evaluation_type": "CLIENT_SIDE_EVALUATION",
+            "order": 8,
+            "reason_for_failure": null,
+            "weightage": 10
+          }
+          
+        ]
+  },
+  {
+      "question_text": "#User Data Form\n\nIn this assignment, you have to build a functionality for a User Data Form by applying JavaScript to the prefilled HTML and CSS.\n\n**Refer to the below video.**\n\n<video width=\"400\" height=\"270\" controls>\n<source src=\"https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/placement-happenings/webcoding-mp4videos-april28/user+data+form+vid.mp4\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>\n\n<br/> <MultiLineWarning> - Don't edit the prefilled code. Just apply JavaScript functionality to the prefilled HTML and CSS to make the website dynamic. </MultiLineWarning>\nBy following the below instructions, achieve the JavaScript functionality.\n\n- When the SUBMIT button is clicked:\n\n - If any one of the input fields (Name, Mobile, Email, State, or Age) is empty, the text content of the element having `id=\"error-message\"` should be replaced with the text `\"Please enter all the fields before submitting!\"` in orange.\n \n - If the Mobile Number is not exactly `10` digits, the text content of the element having `id=\"error-message\"` should be replaced with the text `\"Mobile number should be exactly 10 digits.\"` in orange.\n\n - If the Email does not contain both `\"@\"` and `\".com\"`, the text content of the element having `id=\"error-message\"` should be replaced with the text `\"Please enter a valid email address.\"` in orange.\n\n - If all the input fields are filled properly, the text content of the element having `id=\"processing-message\"` should be replaced with the text `\"Processing...\"` in orange.\n\n   - After `3` seconds, the text content of the element having `id=\"processing-message\"` should be replaced with the text `\"Your data is saved. Thank you!\"` in orange.\n\n- When the RESET button is clicked:\n\n - The values in the input fields and the text content of the element having `id=\"error-message\"` and `id=\"processing-message\"` should be replaced with an empty string.",
+      "question_id": "872f03b9-6195-4b2f-9f6e-f5870108bb0a",
+      "short_text": "User Data Form",
+      "question_type": "HTML_CODING",
+      "language": "ENGLISH",
+      "skills": [],
+      "content_type": "MARKDOWN",
+      "toughness": "EASY",
+      "question_asked_by_companies_info": [],
+      "multimedia": [],
+      "default_code_metadata": [
+          {
+              "code_data": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>User Data</title>\n</head>\n\n<body>\n    <div class=\"container\">\n            <h1>User Data Form</h1>\n            <div id=\"user-form\">\n                <div class=\"input-group\">\n                    <label for=\"name\">Name</label>\n                    <input type=\"text\" id=\"name\" name=\"name\" placeholder=\"Full Name\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"mobile\">Mobile Number</label>\n                    <input type=\"text\" id=\"mobile\" name=\"mobile\" placeholder=\"10-digit Mobile Number\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"email\">Email</label>\n                    <input type=\"text\" id=\"email\" name=\"email\" placeholder=\"Email Address\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"state\">State</label>\n                    <input type=\"text\" id=\"state\" name=\"state\" placeholder=\"Your State\">\n                </div>\n                <div class=\"input-group\">\n                    <label for=\"age\">Age</label>\n                    <input type=\"text\" id=\"age\" name=\"age\" placeholder=\"Your Age\">\n                </div>\n                <p id=\"error-message\"></p>\n                <div class=\"form-actions\">\n                    <button type=\"button\" class=\"reset-btn\" id=\"reset\">RESET</button>\n                    <button type=\"button\" class=\"submit-btn\" id=\"submit\">SUBMIT</button>\n                </div>\n            </div>\n            <p id=\"processing-message\"></p>\n        </div>\n</body>\n\n</html>",
+              "language": "HTML"
+          },
+          {
+              "code_data": "* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n    font-family: Arial, sans-serif;\n}\n\nbody {\n    background-color: #f7f7f7;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    min-height: 100vh;\n    padding: 20px;\n}\n\n.container {\n    background: #ffffff;\n    padding: 30px;\n    border-radius: 12px;\n    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n    width: 100%;\n    max-width: 500px;\n}\n\nh1 {\n    text-align: center;\n    color: #333;\n}\n\n.input-group {\n    margin-bottom: 15px;\n}\n\n.input-group label {\n    display: block;\n    margin-bottom: 6px;\n    font-weight: bold;\n}\n\n.input-group input {\n    width: 100%;\n    padding: 10px;\n    border: 1px solid #ccc;\n    border-radius: 8px;\n    font-size: 14px;\n}\n\n.input-group input:focus {\n    border-color: #4CAF50;\n}\n\n.form-actions {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    margin-top: 20px;\n}\n\nbutton {\n    padding: 10px 20px;\n    font-size: 14px;\n    border: none;\n    border-radius: 6px;\n    cursor: pointer;\n    transition: background 0.3s ease;\n}\n\n.reset-btn {\n    background-color: #e0e0e0;\n    color: #333;\n}\n\n.reset-btn:hover {\n    background-color: #d5d5d5;\n}\n\n.submit-btn {\n    background-color: #4CAF50;\n    color: white;\n}\n\n.submit-btn:hover {\n    background-color: #45a049;\n}\n\n#error-message {\n    font-size: 14px;\n    text-align: center;\n    font-weight: bold;\n    margin-top: 10px;\n    color: red;\n}\n\n#processing-message {\n    text-align: center;\n    font-size: 14px;\n    font-weight: bold;\n    color: orange;\n    margin-top: 20px;\n}\n",
+              "language": "CSS"
+          },
+          {
+              "code_data": "document.getElementById('submit').addEventListener('click', function() {\n\n    const name = document.getElementById('name').value.trim();\n    const mobile = document.getElementById('mobile').value.trim();\n    const email = document.getElementById('email').value.trim();\n    const state = document.getElementById('state').value.trim();\n    const age = document.getElementById('age').value.trim();\n\n    const errorMessage = document.getElementById('error-message');\n    const processingMessageElement = document.getElementById('processing-message');\n\n    // Clear previous messages\n    errorMessage.innerHTML = '';\n    processingMessageElement.innerHTML = '';\n\n    // Check if any field is empty\n    if (!name || !mobile || !email || !state || !age) {\n        errorMessage.textContent = 'Please enter all the fields before submitting.';\n        return; // Prevent further validation if fields are missing\n    }\n\n    // Mobile validation: Ensure it's a 10-digit number\n    if (mobile.length !== 10) {\n        errorMessage.textContent = 'Mobile number should be exactly 10 digits.';\n        return; // Prevent further validation if mobile is invalid\n    }\n\n    // Email validation: Ensure it contains \"@\" and \".com\"\n    if (!email.includes('@') || !email.includes('.com')) {\n        errorMessage.textContent = 'Please enter a valid email address.';\n        return; // Prevent further validation if email is invalid\n    }\n\n    // Display \"Processing...\" message temporarily\n    processingMessageElement.innerHTML = 'Processing...';\n\n    // Simulate saving process with setTimeout and then show success message\n    setTimeout(function() {\n        processingMessageElement.innerHTML = 'Your data is saved. Thank you!';\n    }, 3000); // Show \"Your data is saved. Thank you!\" after 3 seconds\n});\n\n// Add a reset listener for the RESET button to clear error/success message\ndocument.getElementById('reset').addEventListener('click', function() {\n    const errorMessageElement = document.getElementById('error-message');\n    const processingMessageElement = document.getElementById('processing-message');\n    document.getElementById('name').value = '';\n    document.getElementById('mobile').value = '';\n    document.getElementById('email').value = '';\n    document.getElementById('state').value = '';\n    document.getElementById('age').value = '';\n    errorMessageElement.innerHTML = ''; // Clear the error or success message\n    processingMessageElement.innerHTML = ''; // Clear the processing message\n});\n",
+              "language": "JAVASCRIPT"
+          }
+      ],
+      "solutions_metadata": [],
+      "hints": [],
+      "tag_names": [
+          "CSS_SELECTORS_1"
+      ],
+      "concept_tag_names": [],
+      "test_cases": [
+        {
+          "id": "a1e2f2c1-12df-4fb6-bc35-8d8b7579f6cb",
+          "display_text": "When the 'SUBMIT' button is clicked with valid inputs for all fields, the form should proceed successfully and a success message should be displayed.",
+          "criteria": "function testGivenInstructions() { const name = $('#name').toArray().filter((element) => $(element).attr('id') === 'name').length === 1; const mobile = $('#mobile').toArray().filter((element) => $(element).attr('id') === 'mobile').length === 1; const email = $('#email').toArray().filter((element) => $(element).attr('id') === 'email').length === 1; const state = $('#state').toArray().filter((element) => $(element).attr('id') === 'state').length === 1; const age = $('#age').toArray().filter((element) => $(element).attr('id') === 'age').length === 1; const isSubmitBtnExists = $('button').toArray().filter((element) => $(element).attr('id') === 'submit').length === 1; const processingMsg = $('#processing-message').toArray().length === 1; const isFormValid = name && mobile && email && state && age && isSubmitBtnExists && processingMsg; assert(isFormValid === true); return isFormValid; } function testValidInputs() { const nameInput = $('#name'); const mobileInput = $('#mobile'); const emailInput = $('#email'); const stateInput = $('#state'); const ageInput = $('#age'); const submitBtn = $('.submit-btn'); const msgParagraph = $('#processing-message'); nameInput.val('John Doe'); mobileInput.val('1234567890'); emailInput.val('john.doe@xyz.com'); stateInput.val('California'); ageInput.val('30'); submitBtn.click(); const processingMessage = msgParagraph.text() === 'Processing...'; assert(processingMessage === true); setTimeout(function() { const successMessage = msgParagraph.text(); const expectedSuccessMessage = 'Your data is saved. Thank you!'; assert(successMessage === expectedSuccessMessage); }, 3000); } testGivenInstructions(); if (testGivenInstructions()) { testValidInputs(); }",
+          "evaluation_type": "CLIENT_SIDE_EVALUATION",
+          "order": 1,
+          "reason_for_failure": null,
+          "weightage": 10
+        },
+        {
+          "id": "a1f87d7b-845e-4bb7-b81f-3bdf8f3cf57e",
+          "display_text": "When the 'SUBMIT' button is clicked with any empty field, an error message should be displayed stating 'Please enter all the fields before submitting.'",
+          "criteria": "function testGivenInstructions() { const isFormValid = $('#name').toArray().filter((element) => $(element).attr('id') === 'name').length === 1 && $('#mobile').toArray().filter((element) => $(element).attr('id') === 'mobile').length === 1 && $('#email').toArray().filter((element) => $(element).attr('id') === 'email').length === 1 && $('#state').toArray().filter((element) => $(element).attr('id') === 'state').length === 1 && $('#age').toArray().filter((element) => $(element).attr('id') === 'age').length === 1 && $('button').toArray().filter((element) => $(element).attr('id') === 'submit').length === 1 && $('#error-message').toArray().length === 1; assert(isFormValid === true); return isFormValid; } function testValidInputs() { const nameInput = $('#name'); const mobileInput = $('#mobile'); const emailInput = $('#email'); const stateInput = $('#state'); const ageInput = $('#age'); const submitBtn = $('.submit-btn'); const msgParagraph = $('#error-message'); nameInput.val(''); mobileInput.val('1234567890'); emailInput.val('john.doe@xyz.com'); stateInput.val('California'); ageInput.val('30'); submitBtn.click(); const processingMessage = msgParagraph.text() === 'Please enter all the fields before submitting.'; assert(processingMessage === true); } testGivenInstructions(); if (testGivenInstructions()) { testValidInputs(); }",
+          "evaluation_type": "CLIENT_SIDE_EVALUATION",
+          "order": 2,
+          "reason_for_failure": null,
+          "weightage": 10
+        },      
+        {
+          "id": "cd3d6e0b-4078-460b-b6d9-745f3a2d0836",
+          "display_text": "When the 'SUBMIT' button is clicked with a mobile number that is not exactly 10 digits, an error message should be displayed stating 'Mobile number should be exactly 10 digits.'",
+          "criteria": "function testInvalidMobile() { const nameInput = $('#name'); const mobileInput = $('#mobile'); const emailInput = $('#email'); const stateInput = $('#state'); const ageInput = $('#age'); const submitBtn = $('.submit-btn'); nameInput.val('John Doe'); mobileInput.val('12345'); emailInput.val('john.doe@xyz.com'); stateInput.val('California'); ageInput.val('30'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Mobile number should be exactly 10 digits.'; assert(expectedOutput === true); } testInvalidMobile();",
+          "evaluation_type": "CLIENT_SIDE_EVALUATION",
+          "order": 3,
+          "reason_for_failure": null,
+          "weightage": 10
+        },
+        {
+          "id": "f5b57fcd-34a5-4c9b-bd7e-22ed8b8d18d7",
+          "display_text": "When the 'SUBMIT' button is clicked with an invalid email (missing '@' or '.com'), an error message should be displayed stating 'Please enter a valid email address.'",
+          "criteria": "function testInvalidEmail() { const nameInput = $('#name'); const mobileInput = $('#mobile'); const emailInput = $('#email'); const stateInput = $('#state'); const ageInput = $('#age'); const submitBtn = $('.submit-btn'); nameInput.val('John Doe'); mobileInput.val('1234567890'); emailInput.val('johndoe.com'); stateInput.val('California'); ageInput.val('30'); submitBtn.click(); const message = $('#error-message').text(); const expectedOutput = message === 'Please enter a valid email address.'; assert(expectedOutput === true); } testInvalidEmail();",
+          "evaluation_type": "CLIENT_SIDE_EVALUATION",
+          "order": 4,
+          "reason_for_failure": null,
+          "weightage": 10
+        },
+        {
+          "id": "9e9f4dbb-e27a-4f93-a5f9-7c15c083cc9e",
+          "display_text": "When the 'RESET' button is clicked, the form fields should be cleared, and the error or success message should also be removed.",
+          "criteria": "function testResetButton() { const resetBtn = $('.reset-btn'); const errorMessageElement = $('#error-message'); errorMessageElement.html('Processing...'); errorMessageElement.css('color', 'orange'); resetBtn.click(); const formInputs = $('#user-form input, #user-form textarea'); const allFieldsEmpty = formInputs.toArray().every(input => $(input).val() === ''); const messageCleared = errorMessageElement.html() === ''; assert(allFieldsEmpty && messageCleared); } testResetButton();",
+          "evaluation_type": "CLIENT_SIDE_EVALUATION",
+          "order": 5,
+          "reason_for_failure": null,
+          "weightage": 10
+        }
+      ]
+  }
+]

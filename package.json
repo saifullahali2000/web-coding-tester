@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.2.2"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "jsdom": "^26.1.0"
+  }
+}
